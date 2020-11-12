@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>infobox show[one/Multiple]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+<style>.under{background: linear-gradient(transparent  50%, #dea459 50%);}
+       .under1{background: linear-gradient(transparent  50%, #de7e00 50%);}
+       .under2{background: linear-gradient(transparent  50%, #de4a00 50%);}
+       .under3{background: linear-gradient(transparent 50%, #993300 50%);}
+       div{ font-family: 'Pacifico', cursive;}p{font-family:"Nico Moji";}html,body{color: aliceblue;font-family: 'Pacifico',"Hannari", cursive; background-color: #b38f7d; height:100%;}body{padding:0;margin:100px;}h1{padding:0;margin:50;font-size:100%;}</style>
+</head>
+<body>
+
+
+<!-- MAP[START] -->
+<h1>いきたいかふぇまっぷ</h1>
+<div id="myMap" style="width:80vw;height:80vh;"></div>
+<!-- MAP[END] -->
+
+
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AlWrsxZq0AWU7KFEPiNZRY-Roa_DFsN8dLfZKrGKcYZuAP_cXX6mrC8-06NLcb64' async defer></script>
+<script src="../js/BmapQuery.js"></script>
+<script>
+    //init
+    function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(35.003332,135.731632 , "load", 13);
+
+        //----------------------------------------------------
+        //3. Infobox
+        //   options = new Array();
+        //   options[index] = { lat, lon, width, height, title, pinColor, description, show };
+        //----------------------------------------------------
+        const options = [];
+        options[0]={
+            "lat":35.031948,
+            "lon":135.729907,
+            "title":"北区平野町",
+            "pinColor":"#993300",
+            "height":300,
+            "width":320,
+            "description": 'And C<br><a href="https://letronc-m.com/166551" target="_blank" ><img src="../img/andc.jpg" width="200">',
+            "show":false
+        };
+        options[1]={
+            "lat":34.976525,
+            "lon":135.770695,
+            "title":"東山区本町",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": 'ぱんなり<br><a href="https://www.instagram.com/pan_nari/?hl=ja" target=" _blank" ><img src="../img/pannari.jpg" width="200">',
+            "show":false
+        };
+        options[2]={
+            "lat":35.010292,
+            "lon":135.770788,
+            "title":"中京区木屋町",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": 'craft dining upit<br><a href="https://www.instagram.com/upit.dinner/" target=" _blank"><img src="../img/upit.jpg" width="200">',
+            "show":false
+        };
+        options[3]={
+            "lat":35.011564,
+            "lon":135.768149,
+            "title":"東山区松原町",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": 'Noncaron<br><a href="https://www.instagram.com/non.caron/" target="_blank"><img src="../img/noncaron.jpg" width="200">',
+            "show":false
+        };
+        options[4]={
+            "lat":34.997055,
+            "lon":135.779015 ,
+            "title":"東山区清水",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": 'Loose Kyoto<br><a href="https://oshareosaka.com/loose-kyoto/" target=" _blank"><img src="../img/loosekyoto.jpg" width="200">',
+            "show":false
+        };
+        options[5]={
+            "lat":35.005126,
+            "lon":135.772487 ,
+            "title":"東山区常盤町",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": 'CACAO MARKET by MarieBelle<br><a href="https://www.instagram.com/cacaomarket_japan/" target=" _blank"><img src="../img/cacao.jpg" width="200">',
+            "show":false
+        };
+        options[6]={
+            "lat":35.000008,
+            "lon":135.761687  ,
+            "title":"下京区高辻",
+            "pinColor":"#de7e00",
+            "height":300,
+            "width":320,
+            "description": '茶寮翠泉 高辻本店<br><a href="https://www.instagram.com/saryosuisen/?hl=ja" target=" _blank"><img src="../img/kuma.jpg" width="200">',
+            "show":false
+        };
+        options[7]={
+            "lat":35.014687,
+            "lon":135.6781  ,
+            "title":"右京区嵯峨天龍寺造路町",
+            "pinColor":"#993300",
+            "height":300,
+            "width":320,
+            "description": 'eX cafe<br><a href="https://www.instagram.com/excafe_official/?hl=ja" target=" _blank"><img src="../img/excafe.jpg" width="200">',
+            "show":false
+        };
+        options[8]={
+            "lat":34.986008,
+            "lon":135.758149  ,
+            "title":"市下京区東塩小路町",
+            "pinColor":"#dea459 ",
+            "height":300,
+            "width":320,
+            "description": '中村藤吉本店<br><a href="https://www.tokichi.jp/" target=" _blank"><img src="../img/nakamura.jpg" width="200">',
+            "show":false
+        };
+        options[9]={
+            "lat":34.987741 ,
+            "lon":135.749476  ,
+            "title":"下京区大宮通",
+            "pinColor":"#dea459 ",
+            "height":300,
+            "width":320,
+            "description": '梅小路カフェ　BOSSCHE<br><a href="https://www.instagram.com/cafe.bossche/" target=" _blank"><img src="../img/bossche.jpg" width="200">',
+            "show":false
+        };
+        options[10]={
+            "lat":35.000469 ,
+            "lon":135.725872 ,
+            "title":"右京区西院久田町",
+            "pinColor":"#de4a00 ",
+            "height":300,
+            "width":320,
+            "description": 'DICE CAFE<br><a href="http://dice-cafe.sakura.ne.jp/" target=" _blank"><img src="../img/dice.jpg" width="200">',
+            "show":false
+        };
+        options[11]={
+            "lat":35.003967 ,
+            "lon":135.722789 ,
+            "title":"右京区西院四条畑町",
+            "pinColor":"#de4a00 ",
+            "height":300,
+            "width":320,
+            "description": 'branche<br><a href="http://branche.itigo.jp/" target=" _blank"><img src="../img/buranche.jpg" width="200">',
+            "show":false
+        };
+        const style = {
+        pinColor:"rgba(100,100,100,0.4)",
+        fillColor:"rgba(100,100,100,0.4)",
+        strokeWidth:0
+    };
+
+    //CircleSet:Event
+    map.circleSet(34.985849,135.758767, 1500, style, "click", function(){
+        map.circleSet(34.985849,135.758767, 3000, style);
+        map.circleSet(34.985849,135.758767, 5000, style);
+    });
+        //----------------------------------------------------
+        //4. Switch infoboxs
+        //   infoboxLayers(options, true); //true=one, false=Multiple
+        //----------------------------------------------------
+        
+        
+        map.infoboxLayers(options,true);
+
+    }
+</script>
+<p>京都駅から　<span class="under">1.5キロ</span> <span class="under1">3.0キロ</span> <span class="under2">5.0キロ</span> <span class="under3">それいじょう</span></p>
+</body>
+</html>
