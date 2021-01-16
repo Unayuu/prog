@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>Kyoto Travel Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<meta http-equiv="content-type" charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+		$('#drawer-navigation').fadeIn(0); 
+    });
+   $(function() {
+      const hum = $('#hamburger, .close')
+      const nav = $('.sp-nav')
+      hum.on('click', function(){
+         nav.toggleClass('toggle');
+      });
+   });
+   </script>
+</head>
+<style>
+img {
+    border-radius: 10px;
+}
+b{
+    color: #647f46;
+}
+p{
+    color: #647f46;
+}
+</style>
+
+<!-- header[START] -->
+<header>
+<body>
+<h1><a href="index.html">Kyoto Travel Map</a></h1>
+<nav class="pc-nav">
+    <ul>
+        <li><a href="otsumap_jf.html">Japanese</a></li>
+        <li><a href="otsumap_cafe.html"><span style="color:#647f46">Sweets</span></a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+        <li><a href="otsumap_post.html">Post</a></li>
+        <li><a href="index.php">Chat</a></li>
+    </ul>
+</nav>
+<nav class="sp-nav">
+    <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="otsumap_jf.html">Japanese</a></li>
+        <li><a href="otsumap_cafe.html">Sweets</a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+        <li><a href="otsumap_post.html">Post</a></li>
+        <li><a href="index.php">Chat</a></li>
+        <li class="close"><span>Close</span></li>
+    </ul>
+</nav>
+<div id="hamburger">
+    <span></span>
+</div>
+</header>
+<!-- header[END] -->
+<!-- MAP[START] -->
+
+<p2 id="hit"></p2>
+<script>
+    var data = sessionStorage.getItem('word');
+    console.log(data);
+</script>
+
+<!--AutoSuggest[START]-->
+<div id="searchBoxContainer" style="margin-left:40px; margin-bottom:20px;">
+    <input type="text" id="searchBox">
+</div>
+<!--AutoSuggest[END]-->
+
+<div id="myMap" style="width:100vw;height:50vh;"></div>
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AlWrsxZq0AWU7KFEPiNZRY-Roa_DFsN8dLfZKrGKcYZuAP_cXX6mrC8-06NLcb64' async defer></script>
+<script src="./js/BmapQuery.js"></script>
+<script>
+    //init
+    function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(35.009992,135.759609, "load", 14);
+        //----------------------------------------------------
+        //3. Infobox
+        //   options = new Array();
+        //   options[index] = { lat, lon, width, height, title, pinColor, description, show };
+        //----------------------------------------------------
+        const options = [];
+        options[0]={
+            "lat":35.009936,
+            "lon":135.765835,
+            "title":"遊形 サロン・ド・テ",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.71<br><img src="img/cafe/00.jpg" width="200"><br><a href="#down0"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[1]={
+            "lat":35.003307,
+            "lon":135.770245,
+            "title":"フランソア喫茶室",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.68<br><img src="img/cafe/01.jpg" width="200"><br><a href="#down1"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[2]={
+            "lat":35.012302,
+            "lon":135.755623,
+            "title":"喫茶 マドラグ",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.68<br><img src="img/cafe/02.jpg" width="200"><br><a href="#down2"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[3]={
+            "lat":34.999293,
+            "lon":135.7608,
+            "title":"木と根",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.68<br><img src="img/cafe/03.jpg" width="200"><br><a href="#down3"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[4]={
+            "lat":35.005973,
+            "lon":135.772593,
+            "title":"カフェ・ドン バイ スフェラ",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.67<br><img src="img/cafe/04.jpg" width="200"><br><a href="#down4"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[5]={
+            "lat":35.005973,
+            "lon":135.772593,
+            "title":"ザ・ロビーラウンジ ザ・リッツ・カールトン京都",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.67<br><img src="img/cafe/05.jpg" width="200"><br><a href="#down5"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[6]={
+            "lat":35.01696,
+            "lon":135.768794,
+            "title":"ミスリム",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.67<br><img src="img/cafe/06.jpg" width="200"><br><a href="#down6"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[7]={
+            "lat":34.98695,
+            "lon":135.774104,
+            "title":"茶匠 清水一芳園 京都本店",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.64<br><img src="img/cafe/07.jpg" width="200"><br><a href="#down7"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[8]={
+            "lat":34.984687,
+            "lon":135.759073,
+            "title":"祇園辻利 京都駅八条口店",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★☆☆ 3.06<br><img src="img/cafe/08.jpg" width="200"><br><a href="#down8"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[9]={
+            "lat":35.014996,
+            "lon":135.761271,
+            "title":"鳥の木珈琲",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.64<br><img src="img/cafe/09.jpg" width="200"><br><a href="#down9"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        map.infoboxLayers(options,true);
+        map.selectedSuggestion("#searchBox","#searchBoxContainer");
+    }           
+</script>
+<!-- MAP[END] -->
+
+<!-- Score[START]-->
+<br>
+<p1 id="targetspace">
+<div id ="down0" style="margin: 20px">
+    <h3><b>遊形 サロン・ド・テ</b></h3>
+    <p>スティーブジョブズも定宿していた俵屋旅館の併設カフェです。<br>
+    遊形サロン・ド・テに来たら、ぜひ食べて欲しい。他所の和菓子屋さんよりオススメ、俵屋のわらび餅が衝撃的な美味しさ。ふるふるの食感と口溶けと控えめの黒糖の甘みがたまらなく美味しいです。これが俵屋さんに泊まらなくても食べられるのです。<br>
+    他には、たまごサンドが、ピリッとカラシの効いた大人の味がアクセントで美味しい。隣の野菜サンドと交互にに食べています。だからいつも注文してしまいます。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+<div id ="down1" style="margin: 20px">
+    <h3><b>フランソア喫茶室</b></h3>
+    <p>雰囲気ある純喫茶です。プリンが食べたかったけどなかったのでレアチーズケーキを注文しました。<br>
+    大正解！！！濃厚でまったり、だけどしつこくなかったです。<br>
+    底にある生地がさっくりしていてこれがまた美味しかったです。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+<div id ="down2" style="margin: 20px">
+    <h3><b>喫茶 マドラグ</b></h3>
+    <p>京都二条城側にあるマドラグさんに行って来た。<br>
+    ケンミンショーでも何度も何度も登場する有名店で一度は来てみたかった。<br>
+    実際の所、想像を超える卵サンドの大きさと分厚さ知っていても、びっくりしてしまいました。<br>
+    四つの卵サンドが出て来ますが２つしか食べれませんでした、残り２つは持ち帰りにタッパーに入れていただきました。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>      
+<div id ="down3" style="margin: 20px">
+    <h3><b>木と根</b></h3>
+    <p>「四条駅」から徒歩６分位の所にお店はあります。私は地元の人間ではないので場所は分かりづらかったです。<br>
+    元々は古い倉庫ということもありお店の外観だけを見たら、そこだけ時が止まっているかのようなノスタルジックな感じがします。<br>
+    店内は白と木目が基調となっています。お店に合ったテイストの雑貨も販売されていました。<br>
+    ジェラートは栗の味が全面に出ており仄かな甘さで食べやすく、ホットコーヒーは苦み、酸味が程々なので柔らかい飲み口で飲みやすいです。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down4" style="margin: 20px">
+    <h3><b>カフェ・ドン バイ スフェラ</b></h3>
+    <p>京都市鴨川のそばにあるスイーツのお店カフェ・ドン バイ スフェラさんに行ってきました。
+    アクセスは、祇園四条駅、または、三条駅からそれぞれ歩いて5分ほどの所にレストランがあります。
+    祇園四条駅から距離にして280m位です。<br>
+    外観は、スイーツショップとは思えないモダンな建物です。
+    夜になるとライトアップされ、建物全体がコバルトブルーに透かしが描かれ幻想的になります。
+    店内に入り入るととてもモダンです。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down5" style="margin: 20px">
+    <h3><b>ザ・ロビーラウンジ ザ・リッツ・カールトン京都</b></h3>
+    <p>格子状の木枠だったり、ロビーには松が飾られていたり洋と和が融合した内装でゆったりとした心地のいい空気感です。<br>
+    焼菓子　ブリオッシュ、マドレーヌ、サブレ、ピエール・エルメ・パリの3種のホットショコラ<br>
+    焼き菓子をそのままいただいてもおいしいのですがホットショコラにつけて食べるのがおすすめだそうです♪</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down6" style="margin: 20px">
+    <h3><b>ミスリム</b></h3>
+    <p>フレーバーティー、ブレンドティーは普段あまりいただかないのですが、これは大正解。<br>
+    とっても美味しかったです。もちろん、キャロットケーキにもぴったり。<br>
+    ゆっくりと紅茶タイム。楽しめました。また他のケーキ＆紅茶をいただきに伺いたいと思います☆</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down7" style="margin: 20px">
+    <h3><b>茶匠 清水一芳園 京都本店</b></h3>
+    <p>僕が頼んだのは「ちょこかめ」抹茶エスプーマとオランダチョコシロップのかき氷です。<br>
+    映えまくりです。写真撮るのが楽しい。<br>
+    抹茶もチョコシロップも苦味もあるので、甘過ぎず丁度いいっす。余裕でペロリでした。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down8" style="margin: 20px">
+    <h3><b>祇園辻利 京都駅八条口店</b></h3>
+    <p>上から下までみどりみどり！余分なものがほとんど入ってません。<br>
+    がとーぶぶとはお茶とお米で創り上げた和フィナンシェのこと。とてもしっとりとしてて美味しい！<br>
+    緑は抹茶で黒はほうじ茶だけどちらも味が濃厚でほんと美味しい。<br>
+    ソフトも抹茶の味が濃厚だったら、がとーぶぶはさらに濃厚で甘さもしっかりしてるので、抹茶の味が際立ちます。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down9" style="margin: 20px">
+    <h3><b>鳥の木珈琲</b></h3>
+    <p>スプーン越しに触れた感じが、プリンとしては比較的しっかりめ。<br>
+    コーヒーを一口飲んだ後に食べると、カラメルソースの甘味とカスタードのコクが口の中で際立つ。<br>
+    同じプリンを食べた友人は、「喫茶店らしいプリン。結局これだな思う。」とのこと。<br>
+    店内の雰囲気に心を漂わせながら、ゆったり・じっくり味わうにふさわしい両品。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+</p1>    
+<!-- Score[END]-->
+</body>
+</html>
+
+<!-- scroll.action START -->
+<script>
+    $(function(){
+        $("a#scroll_top[href^=#]").click(function(){
+            var speed = 1200;
+            var href = $(this).attr("href");
+            var target = $(href == "#" || href == ""?"html" : href);
+            var position = target.offset().top;
+    
+            $("body, html").animate({scrollTop:position}, speed, "swing");
+            return false;
+        });
+    });
+</script>
+<!-- scroll.action END -->
+
+<script>
+    // ▼①元のHTMLソースを保持しておく変数
+    var backupOriginal = "";
+    // ▼②文字列を検索してハイライト用要素を加える処理
+    function replacer( str, word , att  ) {
+        var SearchString = '(' + word + ')';
+        var RegularExp = new RegExp( SearchString, "g" );
+        var ReplaceString = '<span class="' + att + '">$1</span>';
+        var ResString = str.replace( RegularExp , ReplaceString );
+        //ハイライト文字数カウント
+        var count4=str.match(RegularExp).length;
+        console.log(count4);
+        // sessionStorage.setItem('count4', count4);
+        // alert(count4+'個ヒットしました。');
+        var hello = document.getElementById("hit");
+        hello.innerHTML = "<p2>"+count4+"word Hit!</p2>";
+        return ResString;
+    }
+    // ▼③ハイライトを加える処理
+    function addhighlight() {
+        backupOriginal = document.getElementById("targetspace").innerHTML;
+        var forShow = backupOriginal;
+        // word=$("#search-input").val()
+        forShow = replacer( forShow, data, "mark1" );
+        document.getElementById("targetspace").innerHTML = forShow;
+    }
+    // ▼④ハイライトを消す処理
+    function clearhighlight() {
+        document.getElementById("targetspace").innerHTML = backupOriginal;  // バックアップから書き戻す
+        backupOriginal = "";    // バックアップを消す
+    }
+    // ▼⑤ハイライトを加えるか消すかを判断
+    function highlightcheck() {
+        if( backupOriginal.length == 0 ) {
+            // 何もバックアップされていなければ（未ハイライトなので）ハイライトを加える
+            // $("#btn-onoff2").val("表示ON")
+            addhighlight();
+        }
+        else {
+            // 何かバックアップされていれば（ハイライト済みなので）ハイライトを消す
+            // $("#btn-onoff2").val("表示OFF")
+            clearhighlight();
+        }
+    }
+    // ▼⑥ボタンクリックイベントに、上記の関数を割り当てる
+    if(data!==""){
+        highlightcheck();
+    }
+    // document.getElementById("btn-onoff2").onclick  = highlightcheck;
+    </script>
+
+ <!-- footer[START] -->
+ <footer>
+    <div class="f-menu">
+        <ul>
+            <li><a href="index.html">Top</a></li>
+            <li><a href="otsumap_jf.html">Japanese</a></li>
+            <li><a href="otsumap_cafe.html">Sweets</a></li>
+            <li><a href="otsumap_other.html">Other</a></li>
+            <li><a href="otsumap_htu.html">How to</a></li>
+            <li><a href="otsumap_post.html">Post</a></li>
+            <li><a href="index.php">Chat</a></li>
+        </ul>
+    </div>
+    <p>&copy;Kyoto Travel Map.2021.</p>
+</footer>
+<!-- footer[END] -->

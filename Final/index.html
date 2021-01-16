@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<title>Kyoto Travel Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<meta http-equiv="content-type" charset="utf-8">
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+   <script type="text/javascript">
+    $(window).load(function() {
+		$('#drawer-navigation').fadeIn(0); 
+    });
+    $(function() {
+      const hum = $('#hamburger, .close')
+      const nav = $('.sp-nav')
+      hum.on('click', function(){
+         nav.toggleClass('toggle');
+      });
+    });
+    </script>
+</head>
+<style>
+    h2{
+        font-family: 'Abril Fatface'; 
+    }
+</style>
+<!-- header[START] -->
+<header>
+<body>
+<h1><a href="index.html">Kyoto Travel Map</a></h1>
+<nav class="pc-nav">
+    <ul>
+        <li><a href="otsumap_jf.html">Japanese</a></li>
+        <li><a href="otsumap_cafe.html">Sweets</a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+    </ul>
+</nav>
+<nav class="sp-nav">
+    <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="otsumap_jf.html">Japanese</a></li>
+        <li><a href="otsumap_cafe.html">Sweets</a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+        <li><a href="otsumap_post.html">Post</a></li>
+        <li><a href="index.php">Chat</a></li>
+        <li class="close"><span>Close</span></li>
+    </ul>
+</nav>
+<div id="hamburger">
+    <span></span>
+</div>
+</header>
+<!-- header[END] -->
+
+<div class="main-visual">
+    <h2>Welcome to Kyoto Travel Map</h2>
+</div>
+
+<p1 class="controlpane">
+    <input id="search-input" placeholder="Key Word" type="text" name="search-key">
+    <input type="button" value="🔍" id="btn-onoff">
+</p1>
+<script>
+    $('#btn-onoff').click(function() {
+        word=$("#search-input").val()
+        sessionStorage.setItem('word', word);
+        $('#btn-onoff').css('background-color', '#2f3d20');
+    });
+</script>
+<div class="content">
+    <div class="inner">
+        <a href="otsumap_post.html" class="btn01">Post</a>
+        <a href="index.php" class="btn01">Chat</a>
+
+    </div>
+</div>
+
+<!-- footer[START] -->
+<footer>
+    <!-- <div class="f-menu">
+        <ul>
+            <li><a href="otsumap_jf.html">Japanese</a></li>
+            <li><a href="otsumap_cafe.html">Sweets</a></li>
+            <li><a href="otsumap_other.html">Other</a></li>
+        </ul>
+    </div> -->
+    <p>&copy;Kyoto Travel Map.2021.</p>
+</footer>
+<!-- footer[END] -->
+</html>
+
+
