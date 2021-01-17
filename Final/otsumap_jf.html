@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>Kyoto Travel Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<meta http-equiv="content-type" charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+		$('#drawer-navigation').fadeIn(0); 
+    });
+   $(function() {
+      const hum = $('#hamburger, .close')
+      const nav = $('.sp-nav')
+      hum.on('click', function(){
+         nav.toggleClass('toggle');
+      });
+   });
+   </script>
+</head>
+<style>
+img {
+    border-radius: 10px;
+}
+b{
+    color: #647f46;
+}
+p{
+    color: #647f46;
+    
+}
+</style>
+<!-- header[START] -->
+<header>
+<body>
+<h1><a href="index.html">Kyoto Travel Map</a></h1>
+<nav class="pc-nav">
+    <ul>
+        <li><a href="otsumap_jf.html"><span style="color:#647f46">Japanese</span></a></li>
+        <li><a href="otsumap_cafe.html">Sweets</a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+        <li><a href="otsumap_post.html">Post</a></li>
+        <li><a href="index.php">Chat</a></li>
+    </ul>
+</nav>
+<nav class="sp-nav">
+    <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="otsumap_jf.html">Japanese</a></li>
+        <li><a href="otsumap_cafe.html">Sweets</a></li>
+        <li><a href="otsumap_other.html">Other</a></li>
+        <li><a href="otsumap_post.html">Post</a></li>
+        <li><a href="index.php">Chat</a></li>
+        <li class="close"><span>Close</span></li>
+    </ul>
+</nav>
+<div id="hamburger">
+    <span></span>
+</div>
+</header>
+<!-- header[END] -->
+
+<!-- MAP[START] -->
+<p2 id="hit"></p2>
+<script>
+    var data = sessionStorage.getItem('word');
+    console.log(data);
+</script>
+
+<!--AutoSuggest[START]-->
+<div id="searchBoxContainer" style="margin-left:40px; margin-bottom:20px;">
+    <input type="text" id="searchBox">
+</div>
+<!--AutoSuggest[END]-->
+
+<div id="myMap" style="width:100vw;height:50vh;"></div>
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AlWrsxZq0AWU7KFEPiNZRY-Roa_DFsN8dLfZKrGKcYZuAP_cXX6mrC8-06NLcb64' async defer></script>
+<script src="./js/BmapQuery.js"></script>
+<script>
+    //init
+    function GetMap() {
+        //------------------------------------------------------------------------
+        //1. Instance
+        //------------------------------------------------------------------------
+        const map = new Bmap("#myMap");
+        //------------------------------------------------------------------------
+        //2. Display Map
+        //------------------------------------------------------------------------
+        map.startMap(35.009992,135.759609, "load", 14);
+        //----------------------------------------------------
+        //3. Infobox
+        //   options = new Array();
+        //   options[index] = { lat, lon, width, height, title, pinColor, description, show };
+        //----------------------------------------------------
+        const options = [];
+        options[0]={
+            "lat":34.937224,
+            "lon":135.730912,
+            "title":"蕎麦工房 膳",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.72<br><img src="img/jf/00.jpg" width="200"><br><a href="#down0"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[1]={
+            "lat": 35.014176,
+            "lon":135.784821,
+            "title":"山元麺蔵",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.88<br><img src="img/jf/01.jpg" width="200"><br><a href="#down1"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[2]={
+            "lat":35.005112,
+            "lon":135.773509,
+            "title":"貴久政",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.65<br><img src="img/jf/02.jpg" width="200"><br><a href="#down2"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[3]={
+            "lat":35.002738,
+            "lon":135.769989,
+            "title":"おがわ",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.8<br><img src="img/jf/03.jpg" width="200"><br><a href="#down3"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[4]={
+            "lat":35.01425,
+            "lon":135.78489,
+            "title":"京うどん 生蕎麦 岡北",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.70<br><img src="img/jf/04.jpg" width="200"><br><a href="#down4"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[5]={
+            "lat":35.017175,
+            "lon":135.75855,
+            "title":"丸太町十二段家",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.70<br><img src="img/jf/05.jpg" width="200"><br><a href="#down5"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[6]={
+            "lat":35.014319, 
+            "lon":135.768180,
+            "title":"とんかつ山本",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.71<br><img src="img/jf/06.jpg" width="200"><br><a href="#down6"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[7]={
+            "lat":35.004608,
+            "lon":135.772745,
+            "title":"かね正",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.71<br><img src="img/jf/07.jpg" width="200"><br><a href="#down7"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[8]={
+            "lat":35.004136,
+            "lon":135.777206,
+            "title":"八代目儀兵衛",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.64<br><img src="img/jf/08.jpg" width="200"><br><a href="#down8"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        options[9]={
+            "lat":35.004159,
+            "lon":135.767288,
+            "title":"乙羽",
+            "pinColor":"#647f46",
+            "height":300,
+            "width":320,
+            "description": '★★★★☆ 3.66<br><img src="img/jf/09.jpg" width="200"><br><a href="#down9"><p1>口コミを見る</p1></a>',
+            "show":false
+        };
+        map.infoboxLayers(options,true);
+        map.selectedSuggestion("#searchBox","#searchBoxContainer");
+    }           
+</script>
+<!-- MAP[END] -->
+<!-- Score[START]-->
+<br>
+<p1 id="targetspace">
+<div id ="down0" style="margin: 20px">
+    <h3><b>蕎麦工房 膳</b></h3>
+    <p>最寄駅からも遠く離れた、住宅街を進んだ中にある蕎麦屋ですが、マジで行く価値あります！！<br>
+    なにくろの少ない経験値の中では、間違いなくNo. 1の蕎麦屋・・・<br>
+    「挽きたて・打ちたて・湯がきたて」の「3たて」に拘る大将渾身のもりそば、ぜひ一度味わってみて下さい！</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down1" style="margin: 20px">
+    <h3><b>山元麺蔵</b></h3>
+    <p>5分程待ち、細挽き蕎麦が運ばれてきます。早速、蕎麦をつけ汁につけて食べてみます。<br>
+    蕎麦の香りと旨み、そしてわずかに粘りけがありとても旨い！<br>
+    薬味の刻みネギ、おろしたての本ワサビが小皿に盛り付けられています。<br>
+    ますばネギ、ワサビを3割ほどつけ汁に入れます、つけ汁は濃い目のかえしとダシの旨みが効いており、しっかりとした味で蕎麦との相性も抜群です。
+    ワサビも適度な辛味と微かな甘みがあり、蕎麦の味を際立てます。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+<div id ="down2" style="margin: 20px">
+    <h3><b>貴久政</b></h3>
+    <p>京都の最後は祇園にある貴久政へ。祇園といえば美味しいけど高い、みたいなイメージがありますが、<br>
+    このお店は美味しいけど安い、これにつきます。特にランチがおすすめらしく、行くことにしました。<br>
+    ちなみに人気店なので、予約した方がよいです！</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>      
+<div id ="down3" style="margin: 20px">
+    <h3><b>おがわ</b></h3>
+    <p>先ずは鴨の塩焼きから、ほどよく脂が乗って美味しいですねえ。<br>
+    やっぱりお酒頼んだらよかったかなぁ。（笑）そして蕎麦。麺はかなり細めです。<br>
+    確かに美味いけど、ちょいとぼそっとした感じがあるかなあ。もちろん美味しい蕎麦でした！</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down4" style="margin: 20px">
+    <h3><b>京うどん 生蕎麦 岡北</b></h3>
+    <p>訪れた秋の京都、南禅寺、永観堂から真如堂まで散策して、お昼を頂こうと創業70年の岡北さんに伺いました。<br>
+    平日13時半頃、20名位は並んでいました。平日とはいえさすが人気店ですね…<br>
+    20分位並んで入店。意外と進みは早かったです。<br>
+    お店を出る2時半頃は更に列が延びてて、びっくりしました。次回は卵とじも食べたいし、丼ものにも惹かれます。<br>
+    京都に来た際にはまた必ず再訪したいお店になりました。ご馳走様でした。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down5" style="margin: 20px">
+    <h3><b>丸太町十二段家</b></h3>
+    <p>一品は冷たい茶そばの椀でジュレであったり爽やか系がいくつか<br>
+        出汁巻きが思ったよりも大きくふんわり系の美味しさです。<br>
+        お茶漬けのお茶は特別なものかと思ってましたが普通です。<br>
+        最初はご飯でしっかりそして後は好きなタイミングでお茶漬けにしていくというひつまぶしスタイルですね<br>
+        当然の事ながら漬物が美味しい少しだけ醤油を指す漬物も絶品ですがこの漬物でのお茶漬けはやはり嬉しいですね</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down6" style="margin: 20px">
+    <h3><b>とんかつ山本</b></h3>
+    <p>とんかつ二回目にて確認すべく再訪してみました。<br>
+    さて目的であるロースカツをオーダーです。再確認です。細かめパン粉の薄衣は香ばしく揚がっておりなかなかです。<br>
+    ただ衣とお肉ははがれ、さらに肉はよく熱が通ってるので固めです。最近の柔らか目トンカツに慣れてしまっているので、ちょっと気になるところです。<br>
+    しかし、それ以外、ご飯、香の物・・酸味の効いたぬか漬け、粕汁風の豚汁、どれもしっかりしていて美味です。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+<div id ="down7" style="margin: 20px">
+    <h3><b>かね正</b></h3>
+    <p>香ばしく焼かれた鰻に、錦糸卵(京風薄味)の甘味とタレが重なり、口の中で複雑に混ざりあいます( 〃▽〃)<br>
+    ご飯にはゴマとたれが入り、所謂"まぶし"で頂くのも特徴的♪<br>
+    お麩の入った、おすいもんもむっちゃ上品&懐かしい味わいでした♪<br>
+    築年数が経ってるはずの店内でも塵ひとつ落ちてない程清潔に保たれてるのにも驚きました。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div>
+<div id ="down8" style="margin: 20px">
+    <h3><b>八代目儀兵衛</b></h3>
+    <p>腕のある職人さんが対応していて、接客もしっかりしています。<br>
+    常にお客さんに気を遣っていて、気が利きます。こういうお店はお料理や雰囲気と同じぐらい接客のクオリティも大切ですが、さすがしっかりしていました。<br>
+    この辺りでも、お店が人気な理由がわかります。期待値は大きかったですが、それ以上にお料理が美味しくて雰囲気も良かったです。<br>
+    とても人気なお店なのでハードルはたかいですが、また行きたいなと思います。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+<div id ="down9" style="margin: 20px">
+    <h3><b>乙羽</b></h3>
+    <p>大好きな大好きなおいなりさんが食べられる乙羽さん。今回は初めて店内でイートインです。<br>
+    目的は、冬の名物「むし寿司」です。むし寿司はばらちらしを蒸したもの。一度食べてみたかったんですよねー。<br>
+    むし寿司。ほかほかのむし寿司です。錦糸卵の下にはカットされたあなごと、甘く煮てあるしいたけ入り。はふはふです。ちゃわん蒸しは、普通な感じで。</p>
+    <div class="scroll_button">
+        <a id="scroll_top" href="#">Mapに戻る</a>
+    </div>
+</div> 
+</p1>  
+<!-- Score[END]-->
+</body>
+</html>
+
+<!-- scroll.action START -->
+<script>
+    $(function(){
+        $("a#scroll_top[href^=#]").click(function(){
+            var speed = 1200;
+            var href = $(this).attr("href");
+            var target = $(href == "#" || href == ""?"html" : href);
+            var position = target.offset().top;
+    
+            $("body, html").animate({scrollTop:position}, speed, "swing");
+            return false;
+        });
+    });
+</script>
+<!-- scroll.action END -->
+
+
+<script>
+    // ▼①元のHTMLソースを保持しておく変数
+    var backupOriginal = "";
+    // ▼②文字列を検索してハイライト用要素を加える処理
+    function replacer( str, word , att  ) {
+        var SearchString = '(' + word + ')';
+        var RegularExp = new RegExp( SearchString, "g" );
+        var ReplaceString = '<span class="' + att + '">$1</span>';
+        var ResString = str.replace( RegularExp , ReplaceString );
+        //Word count.
+        var count1=str.match(RegularExp).length;
+        console.log(count1);
+        var hello = document.getElementById("hit");
+        hello.innerHTML = "<p2>"+count1+"word Hit!</p2>";
+        return ResString;
+    }
+    function addhighlight() {
+        backupOriginal = document.getElementById("targetspace").innerHTML;
+        var forShow = backupOriginal;
+        forShow = replacer( forShow, data, "mark1" );
+        document.getElementById("targetspace").innerHTML = forShow;
+    }
+    //highlight delete.
+    function clearhighlight() {
+        document.getElementById("targetspace").innerHTML = backupOriginal;  // バックアップから書き戻す
+        backupOriginal = ""; 
+    }
+    //highlight judge.
+    function highlightcheck() {
+        if( backupOriginal.length == 0 ) {
+            // 何もバックアップされていなければ（未ハイライトなので）ハイライトを加える
+            // $("#btn-onoff2").val("表示ON")
+            addhighlight();
+        }
+        else {
+            // 何かバックアップされていれば（ハイライト済みなので）ハイライトを消す
+            // $("#btn-onoff2").val("表示OFF")
+            clearhighlight();
+        }
+    }
+    // ▼⑥ボタンクリックイベントに、上記の関数を割り当てる
+    if(data!==""){
+        highlightcheck();
+    }
+    // document.getElementById("btn-onoff2").onclick  = highlightcheck;
+    </script>
+
+    <!-- footer[START] -->
+    <footer>
+        <div class="f-menu">
+            <ul>
+                <li><a href="index.html">Top</a></li>
+                <li><a href="otsumap_jf.html">Japanese</a></li>
+                <li><a href="otsumap_cafe.html">Sweets</a></li>
+                <li><a href="otsumap_other.html">Other</a></li>
+                <li><a href="otsumap_htu.html">How to</a></li>
+                <li><a href="otsumap_post.html">Post</a></li>
+                <li><a href="index.php">Chat</a></li>
+            </ul>
+        </div>
+        <p>&copy;Kyoto Travel Map.2021.</p>
+    </footer>
+    <!-- footer[END] -->
