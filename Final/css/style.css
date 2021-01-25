@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Kosugi+Maru&display=swap');
-
-
 span.mark1 {
   background-color:aliceblue;
   border-radius: 5px;
@@ -10,7 +8,6 @@ span.mark1 {
   text-align: center;
   background-color: #627250;
 }
-
 #search-input{
   -webkit-appearance: none;
   display: inline-block;

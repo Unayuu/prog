@@ -97,10 +97,10 @@
     <nav class="pc-nav">
         <ul>
             <li><a href="otsumap_jf.html">Japanese</a></li>
-            <li><a href="otsumap_cafe.html"><span style="color:#647f46">Sweets</span></a></li>
+            <li><a href="otsumap_cafe.html">Sweets</a></li>
             <li><a href="otsumap_other.html">Other</a></li>
             <li><a href="otsumap_htu.html">How to</a></li>
-            <li><a href="otsumap_post.html">Post</a></li>
+            <li><a href="otsumap_post.html"><span style="color:#647f46">Post</span></a></li>
             <li><a href="index.php">Chat</a></li>
         </ul>
     </nav>
@@ -133,11 +133,10 @@
             <p2><a href="#" id="select_btn">写真選択</a></p2> <p2><a href="map_view.php" id="select_btn">みんなの投稿</a></p2>
             <form method="post" action="fileup.php" enctype="multipart/form-data">
                 <input type="file" accept="image/*" capture="camera" id="image_file" value="" name="upfile" style="opacity:0;">
-                場所の名前 <input type="text" name="name"><br>
+                場所の名前 <input type="text" name="name">　経度<input type="text" name="lat" id="lat">
+                緯度<input type="text" name="lon" id="lon"><br>
                 場所の感想 <input type="text" name="comment">
                 <input type="submit" id="upload_btn" value="Post">
-                <input type="hidden" name="lat" id="lat">
-                <input type="hidden" name="lon" id="lon">
             </form>
         </div>
         <div id="photarea">
